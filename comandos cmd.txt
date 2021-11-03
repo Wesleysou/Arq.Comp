@@ -1,0 +1,6 @@
+dir = show all directories in the cp
+show databases; = show all databases in your cmd
+show tables; = show all tables in your database
+desc "table name"; = show the table
+-u root -p
+Enter password: To enter in your mysql 
