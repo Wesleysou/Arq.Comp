@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image / png  " size="32x32" href="./favicon-32x32.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+    <title>Gu Costa, Wesley e João Pedro Crossword</title>
+
+</head>
+
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #b7e4c7;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+        }
+
+        h1 {
+            width: 60%;
+            color: #080808;
+            text-align: center;
+            margin-top: 45px;
+            margin-left: 45px;
+            font-size: 40px;
+            float: left;
+        }
+
+        .cruzadinha {
+            width: 500px;
+            display: grid;
+            grid-template-columns: repeat(16, 35px);
+            color: green;
+            font-size: 28px;
+            text-align: center;
+            margin-left: 50px;
+            margin-top: 50px;
+
+        }
+
+        .divyep {
+            border: solid 1px #081c15;
+            background-color: white;
+        }
+
+        .divnot {
+            background-color: #081c15;
+            font-size: 20px;
+            padding-top: 3px;
+        }
+
+        .divnone {
+            background-color: #081c15;
+            color: #081c15;
+        }
+
+        .bloco-espaco {
+            border: solid 1px #777;
+            background-color: #777;
+            color: #777;
+        }
+        /* Css da caixa de perguntas */
+        #caixaperguntas {
+            width: 48%;
+            background-color: #2d6a4f;
+            height: 500px;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 50px;
+            overflow-y: scroll;
+
+        }
+
+        #caixaperguntas::-webkit-scrollbar {
+            width: 12px;
+
+        }
+
+        #caixaperguntas::-webkit-scrollbar-track {
+            background: 2d6a4f;
+            
+        }
+
+        #caixaperguntas::-webkit-scrollbar-thumb {
+            background-color: #081c15;
+            border-radius: 20px;
+            border: 3px solid 2d6a4f;
+        }
+
+        li {
+            list-style-type: decimal
+        }
+
+        input {
+            border: solid 1px black;
+            border-radius: 7px;
+            height: 17px;
+        }
+
+        button {
+            background-color: black;
+            text-transform: uppercase;
+            color: white;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            font-weight: bolder;
+            height: 25px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #40916c;
+        }
+
+        sup {
+            text-align: left;
+            font-size: 11px;
+            font-weight: bolder;
+            margin-left: -15px;
+            color: black;
+
+        }
+
+        #supDiferente {
+            margin-left: 0px;
+        }
+
+        img {
+            width: 14%;
+            margin-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 0px;
+            color: black;
+        }
+
+        .fixoLeft {
+            width: 50%;
+            margin-top: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .buttons button {
+
+            background-color: #74c69d;
+            height: 35px;
+            margin-right: 15px;
+            border-radius: 20px;
+
+        }
+
+        .buttons button:hover {
+            background-color: rgb(50, 11, 87);
+        }
+
+        .creditos {
+            text-align: center;
+            margin-right: 10px;
+            color: #000080;
+        }
+    </style>
+
+
+    <div class="container">
+
+        <div id="caixaperguntas">
+
+            <h2>PERGUNTAS:</h2>
+
+            <br>
+            <!--CPU-->
+
+            <li>
+                <label for="pergcpu"> É a parte de um sistema computacional, que realiza as instruções de um programa
+                    de computador, para executar a aritmética básica, lógica, e a entrada e saída de dados.</label>
+                <br> <br>
+                <input type="text" placeholder="3 letras..." maxlength="3" id="pergcpu">
+                <button id="buttonpergcpu" onclick="resultado(pergpcpu);">Conferir</button>
+            </li>
+
+            <br>
+            <!--ULA-->
+
+            <li>
+                <label for="pergula"> É a unidade responsável pela realização das operações lógicas e aritméticas de
+                    um microprocessador.</label>
+                <br> <br>
+                <input type="text" placeholder="3 letras..." maxlength="3" id="pergula">
+                <button id="buttonpergula" onclick="resultado(pergula);">Conferir</button>
+            </li>
+
+            <br>
+            <!--REGISTRADORES-->
+
+            <li>
+                <label for="pergregis">É uma memória local rápida do microprocessador, destinada ao armazenamento de
+                    dados e instruções.</label>
+                <br> <br>
+                <input type="text" placeholder="13 letras..." maxlength="13" id="pergregis">
+                <button id="buttonpergregis" onclick="resultado(pergregis);">Conferir</button>
+            </li>
+
+            <br>
+            <!--RAM-->
+
+            <li>
+                <label for="pergram">É a memória volátil que armazena temporariamente os arquivos com os quais você
+                    está trabalhando.</label>
+                <br> <br>
+                <input type="text" placeholder="3 letras..." maxlength="3" id="pergram">
+                <button id="buttonpergram" onclick="resultado(pergram);">Conferir</button>
+            </li>
+
+            <br>
+            <!--ROM-->
+
+            <li>
+                <label for="pergrom">É uma memória não volátil que armazena permanentemente as instruções no seu
+                    computador.</label>
+                <br> <br>
+                <input type="text" placeholder="3 letras..." maxlength="3" id="pergrom">
+                <button id="buttonpergrom" onclick="resultado(pergrom);">Conferir</button>
+            </li>
+
+            <br>
+            <!--EPROM-->
+
+            <li>
+                <label for="pergeprom">É um tipo de chip de memória de computador que mantém seus dados quando a energia
+                    é desligada. </label>
+                <br> <br>
+                <input type="text" placeholder="5 letras..." maxlength="5" id="pergeprom">
+                <button id="buttonpergeprom" onclick="resultado(pergeprom);">Conferir</button>
+            </li>
+
+            <br>
+            <!--FLASH-->
+
+            <li>
+                <label for="pergflash">É um chip de memória de computador que mantém informações armazenadas sem a
+                    necessidade de uma fonte de energia.</label>
+                <br> <br>
+                <input type="text" placeholder="5 letras..." maxlength="5" id="pergflash">
+                <button id="buttonpergflash" onclick="resultado(pergflash);">Conferir</button>
+            </li>
+
+            <br>
+            <!--MEMORIA DE MASSA-->
+
+            <li>
+                <label for="pergmassa">Tem como função armazenar grandes quantidades de informações. (3
+                    palavras...).</label>
+                <br> <br>
+                <input type="text" placeholder="7 letras, ,2 letras, ,5 letras..." maxlength="16" id="pergmassa">
+                <button id="buttonpergmassa" onclick="resultado(pergmassa);">Conferir</button>
+            </li>
+
+            <br>
+            <!--DMA-->
+
+            <li>
+                <label for="pergdma">Sigla do recurso da placa mãe que capacita os periféricos a terem acesso direto à
+                    memória RAM, sem sobrecarregarem o processador. </label>
+                <br> <br>
+                <input type="text" placeholder="3 letras..." maxlength="3" id="pergdma">
+                <button id="buttonpergdma" onclick="resultado(pergdma);">Conferir</button>
+            </li>
+
+            <br>
+            <!--CS-->
+
+            <li>
+                <label for="pergcs">Sigla da linha de controle usada para selecionar um dos circuitos integrados
+                    entre vários conectados ao mesmo barramento de computador.</label>
+                <br> <br>
+                <input type="text" placeholder="2 letras..." maxlength="2" id="pergcs">
+                <button id="buttonpergcs" onclick="resultado(pergcs);">Conferir</button>
+            </li>
+
+            <br>
+            <!--ADRESS BUS -->
+
+            <li>
+                <label for="pergadress"> É a arquitetura de barramento que especifica o endereço de hardware da memória
+                    física (o endereço físico). (2 palavras...).</label>
+                <br> <br>
+                <input type="text" placeholder="6 letras, ,3 letras..." maxlength="10" id="pergadress">
+                <button id="buttonpergadress" onclick="resultado(pergadress);">Conferir</button>
+            </li>
+
+            <br>
+            <!--DATA BUS -->
+
+            <li>
+                <label for="pergdata">É um sistema dentro de um computador ou dispositivo, consistindo em um conector
+                    ou conjunto de fios, que fornece transporte para os dados.</label>
+                <br> <br>
+                <input type="text" placeholder="4 letras, ,3 letras..." maxlength="8" id="pergdata">
+                <button id="buttonpergdata" onclick="resultado(pergdata);">Conferir</button>
+            </li>
+
+            <br>
+            <!--I5-->
+
+            <li>
+                <label for="pergi5">Linha de processador da Intel que introduziu o Turbo Boost.</label>
+                <br> <br>
+                <input type="text" placeholder="2 letras..." maxlength="2" id="pergi5">
+                <button id="buttonpergi5" onclick="resultado(pergi5);">Conferir</button>
+            </li>
+
+            <br>
+            <!--I7-->
+
+            <li>
+                <label for="pergi7">Linha de processador da Intel de alta performance indicada para multi-tarefas,
+                    programas,edições e jogos pesados.</label>
+                <br> <br>
+                <input type="text" placeholder="2 letras..." maxlength="2" id="pergi7">
+                <button id="buttonpergi7" onclick="resultado(pergi7);">Conferir</button>
+            </li>
+
+            <br>
+            <!--DUAL-CORE-->
+
+            <li>
+                <label for="pergcore">Quando se trata de núcleos de processamento, o Intel Pentium Gold G6400 é
+                    considerado "____-____". (Palavra composta...).</label>
+                <br> <br>
+                <input type="text" placeholder="4 letras, - , 4 letras..." maxlength="9" id="pergcore">
+                <button id="buttonpergcore" onclick="resultado(pergcore);">Conferir</button>
+            </li>
+
+            <br>
+            <!--QUAD-CORE-->
+
+            <li>
+                <label for="pergquad">Quando se trata de núcleos de processamento, o Intel Core i3-10100 é considerado
+                    "____-____". (Palavra composta...).</label>
+                <br> <br>
+                <input type="text" placeholder="4 letras, - , 4 letras..." maxlength="9" id="pergquad">
+                <button id="btquad" onclick="resultado(pergquad);">Conferir</button>
+            </li>
+
+            <br> <br>
+
+            <div class="buttons">
+
+                <button onclick="window.location.reload()">RECOMEÇAR</button>
+
+            </div>
+
+            <br>
+
+
+        </div>
+
+        <div class="fixoLeft">
+
+            <div class="cruzadinha" id="cruzadinha">
+
+                <div class="divnot"></div>
+                <div class="divyep" id="qQuad"><sup>16</sup></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="dDual"><sup id="supDiferente">12/15</sup></div>
+                <div class="divyep" id="uDual"></div>
+                <div class="divyep" id="aDual"></div>
+                <div class="divyep" id="lDual"></div>
+                <div class="divyep" id="tracoDual">-</div>
+                <div class="divyep" id="cDual"><sup>1</sup></div>
+                <div class="divyep" id="oDual"></div>
+                <div class="divyep" id="rDual"><sup>4</sup></div>
+                <div class="divyep" id="eDual"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="uULA"><sup>2</sup></div>
+                <div class="divyep" id="lULA"></div>
+                <div class="divyep" id="aULA"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="aData"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="pCPU"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="aRAM"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="aQuad"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="tData"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="uCPU"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="mRAM"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="dQuad"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="dDMA"><sup>9</sup></div>
+                <div class="divyep" id="mDMA"></div>
+                <div class="divyep" id="aDMA"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="aAdress"><sup>11</sup></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="tracoQuad">-</div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="bloco-espaco" id="espacoData"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="dAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="cQuad"><sup>10</sup></div>
+                <div class="divyep" id="sCS"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="bData"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="fFlash"><sup>7</sup></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="rAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="oQuad"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="uData"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="lFlash"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="eAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="rQuad"><sup>3</sup></div>
+                <div class="divyep" id="eRegistradores"></div>
+                <div class="divyep" id="gRegistradores"></div>
+                <div class="divyep" id="iRegistradores"><sup>13</sup></div>
+                <div class="divyep" id="sRegistradores"></div>
+                <div class="divyep" id="tRegistradores"></div>
+                <div class="divyep" id="rRegistradores"></div>
+                <div class="divyep" id="aRegistradores"></div>
+                <div class="divyep" id="dRegistradores"></div>
+                <div class="divyep" id="oRegistradores"></div>
+                <div class="divyep" id="r2Registradores"></div>
+                <div class="divyep" id="e2Registradores"></div>
+                <div class="divyep" id="s2Registradores"></div>
+                <div class="divnone">.</div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divyep" id="eQuad"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="i5"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="sFlash"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="sAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="hFlash"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="bloco-espaco" id="espacoAdress"> </div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="eEPROM"><sup>6</sup></div>
+                <div class="divyep" id="pEPROM"></div>
+                <div class="divyep" id="rEPROM"><sup>5</sup></div>
+                <div class="divyep" id="oEPROM"></div>
+                <div class="divyep" id="mEPROM"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="bAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnone">.</div>
+                <div class="divnone">.</div>
+                <div class="divnot"></div>
+                <div class="divyep" id="oROM"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="uAdress"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="mMASSA"><sup>8</sup></div>
+                <div class="divyep" id="eMASSA"></div>
+                <div class="divyep" id="m2MASSA"></div>
+                <div class="divyep" id="oMASSA"></div>
+                <div class="divyep" id="rMASSA"></div>
+                <div class="divyep" id="iMASSA"><sup>14</sup></div>
+                <div class="divyep" id="aMASSA"></div>
+                <div class="bloco-espaco" id="espacoMASSA">.</div>
+                <div class="divyep" id="dMASSA"></div>
+                <div class="divyep" id="e2MASSA"></div>
+                <div class="bloco-espaco" id="espaco2MASSA">.</div>
+                <div class="divyep" id="m3MASSA"></div>
+                <div class="divyep" id="a2MASSA"></div>
+                <div class="divyep" id="s2Adress"></div>
+                <div class="divyep" id="sMASSA"></div>
+                <div class="divyep" id="a3MASSA"></div>
+                <div class="divnone">.</div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divyep" id="i7"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+                <div class="divnot"></div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    var acertos = 0;
+
+    const resultado = (Perguntas) => {
+        var pergunta = Perguntas.value;
+
+        if (Perguntas == pergcpu) {
+            if (pergunta.toUpperCase() == "CPU") {
+
+                alert('RESPOSTA CORRETA!!!');
+                cDual.innerHTML = "C";
+                pCPU.innerHTML = "P";
+                uCPU.innerHTML = "U";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergcpu.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+
+            }
+        }
+        else if (Perguntas == pergula) {
+            if (pergunta.toUpperCase() == "ULA") {
+                alert('RESPOSTA CORRETA!!!');
+                uULA.innerHTML = "U";
+                lULA.innerHTML = "L";
+                aULA.innerHTML = "A";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergula.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+
+            }
+        }
+        else if (Perguntas == pergregis) {
+            if (pergunta.toUpperCase() == "REGISTRADORES") {
+
+                alert('RESPOSTA CORRETA!!!');
+                rQuad.innerHTML = "R";
+                eRegistradores.innerHTML = "E";
+                gRegistradores.innerHTML = "G";
+                iRegistradores.innerHTML = "I";
+                sRegistradores.innerHTML = "S";
+                tRegistradores.innerHTML = "T";
+                rRegistradores.innerHTML = "R";
+                aRegistradores.innerHTML = "A";
+                dRegistradores.innerHTML = "D";
+                oRegistradores.innerHTML = "O";
+                r2Registradores.innerHTML = "R";
+                e2Registradores.innerHTML = "E";
+                s2Registradores.innerHTML = "S";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergregis.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergram) {
+            if (pergunta.toUpperCase() == "RAM") {
+
+                alert('RESPOSTA CORRETA!!!');
+                rDual.innerHTML = "R";
+                aRAM.innerHTML = "A";
+                mRAM.innerHTML = "M";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergram.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergrom) {
+            if (pergunta.toUpperCase() == "ROM") {
+
+                alert('RESPOSTA CORRETA!!!');
+                rEPROM.innerHTML = "R";
+                oROM.innerHTML = "O";
+                m2MASSA.innerHTML = "M";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergrom.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergeprom) {
+            if (pergunta.toUpperCase() == "EPROM") {
+
+                alert('RESPOSTA CORRETA!!!');
+                eEPROM.innerHTML = "E";
+                pEPROM.innerHTML = "P";
+                rEPROM.innerHTML = "R";
+                oEPROM.innerHTML = "O";
+                mEPROM.innerHTML = "M";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergeprom.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergflash) {
+            if (pergunta.toUpperCase() == "FLASH") {
+
+                alert('RESPOSTA CERTA!!!');
+                fFlash.innerHTML = "F";
+                lFlash.innerHTML = "L";
+                aRegistradores.innerHTML = "A";
+                sFlash.innerHTML = "S";
+                hFlash.innerHTML = "H";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergflash.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergmassa) {
+            if (pergunta.toUpperCase() == "MEMORIA DE MASSA" || pergunta.toUpperCase() == "MEMÓRIA DE MASSA") {
+
+                alert('RESPOSTA CERTA!!!');
+                mMASSA.innerHTML = "M";
+                eMASSA.innerHTML = "E";
+                m2MASSA.innerHTML = "M";
+                oMASSA.innerHTML = "Ó";
+                rMASSA.innerHTML = "R";
+                iMASSA.innerHTML = "I";
+                aMASSA.innerHTML = "A";
+                dMASSA.innerHTML = "D";
+                e2MASSA.innerHTML = "E";
+                m3MASSA.innerHTML = "M";
+                a2MASSA.innerHTML = "A";
+                s2Adress.innerHTML = "S";
+                sMASSA.innerHTML = "S";
+                a3MASSA.innerHTML = "A";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergmassa.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergdma) {
+            if (pergunta.toUpperCase() == "DMA") {
+
+                alert('RESPOSTA CERTA!!!');
+                dDMA.innerHTML = "D";
+                mDMA.innerHTML = "M";
+                aDMA.innerHTML = "A";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergdma.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergcs) {
+            if (pergunta.toUpperCase() == "CS") {
+
+                alert('RESPOSTA CERTA!!!');
+                cQuad.innerHTML = "C";
+                sCS.innerHTML = "S";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergcs.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergadress) {
+            if (pergunta.toUpperCase() == "ADRESS BUS") {
+
+                alert('RESPOSTA CERTA!!!');
+                aAdress.innerHTML = "A";
+                dAdress.innerHTML = "D";
+                rAdress.innerHTML = "R";
+                eAdress.innerHTML = "E";
+                s2Registradores.innerHTML = "S";
+                sAdress.innerHTML = "S";
+                bAdress.innerHTML = "B";
+                uAdress.innerHTML = "U";
+                s2Adress.innerHTML = "S";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergadress.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergdata) {
+            if (pergunta.toUpperCase() == "DATA BUS") {
+
+                alert('RESPOSTA CERTA!!!');
+                dDual.innerHTML = "D";
+                aData.innerHTML = "A";
+                tData.innerHTML = "T";
+                aDMA.innerHTML = "A";
+                bData.innerHTML = "B";
+                uData.innerHTML = "U";
+                sRegistradores.innerHTML = "S";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergdata.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergi5) {
+            if (pergunta.toUpperCase() == "I5") {
+
+                alert('RESPOSTA CERTA!!!');
+                iRegistradores.innerHTML = "I";
+                i5.innerHTML = "5";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergi5.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergi7) {
+            if (pergunta.toUpperCase() == "I7") {
+
+                alert('RESPOSTA CERTA!!!');
+                iMASSA.innerHTML = "I";
+                i7.innerHTML = "7";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergi7.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergcore) {
+            if (pergunta.toUpperCase() == "DUAL CORE" || pergunta.toUpperCase() == "DUAL-CORE") {
+
+                alert('RESPOSTA CERTA!!!');
+                dDual.innerHTML = "D";
+                uDual.innerHTML = "U";
+                aDual.innerHTML = "A";
+                lDual.innerHTML = "L";
+                tracoDual.innerHTML = "-";
+                cDual.innerHTML = "C";
+                oDual.innerHTML = "O";
+                rDual.innerHTML = "R";
+                eDual.innerHTML = "E";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                buttonpergcore.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+        else if (Perguntas == pergquad) {
+            if (pergunta.toUpperCase() == "QUAD CORE" || pergunta.toUpperCase() == "QUAD-CORE") {
+
+                alert('RESPOSTA CERTA!!!');
+                qQuad.innerHTML = "Q";
+                uULA.innerHTML = "U";
+                aQuad.innerHTML = "A";
+                dQuad.innerHTML = "D";
+                cQuad.innerHTML = "C";
+                oQuad.innerHTML = "O";
+                rQuad.innerHTML = "R";
+                eQuad.innerHTML = "E";
+                Perguntas.disabled = true;
+                Perguntas.style.backgroundColor = "#32CD32";
+                btquad.style.display = "none";
+                acertos += 1;
+                funcAcertos();
+            }
+            else {
+                alert('RESPOSTA ERRADA!!!');
+                Perguntas.style.backgroundColor = "red";
+            }
+        }
+    }
+
+
+</script>
